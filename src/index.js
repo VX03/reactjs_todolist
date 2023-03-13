@@ -100,7 +100,7 @@ function NavToDo(){
 }
 function ToDo({tasksState, list,setList, deleteTodo}){
     const toDoCompleted = (id) => {
-        const objIndex = list.findIndex((obj => obj.id == id));
+        const objIndex = list.findIndex((obj => obj.id === id));
         let tasklist = list;
         tasklist[objIndex].todoState = 2;
         setList(tasklist);
@@ -114,7 +114,7 @@ function ToDo({tasksState, list,setList, deleteTodo}){
                     .map((todo) => (
                 <li key={todo.id}>
                     {  
-                        todo.todoState == 1 ?
+                        todo.todoState === 1 ?
                         <div>
                             {todo.todo}
                             <button onClick={() => deleteTodo(todo.id)}>&times;</button>
