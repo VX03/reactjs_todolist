@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+    margin: 10px;
+    font-size: 25px;
+}
+#btnNav {
+    border: transparent;
+    border-radius: 5px;
+    font-size: 25px;
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    display: inline-block;
+    justify-content: center;
+    font-size: 25px;
+    margin-left: 200px;
+    margin-top: 20px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+input {
+    font-size: 25px;
+}
