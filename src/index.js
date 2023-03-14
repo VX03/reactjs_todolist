@@ -115,12 +115,12 @@ function ToDo({tasksState, list,setList, deleteTodo}){
                 <li key={todo.id}>
                     {  
                         todo.todoState === 1 ?
-                        <div>
+                        <React.Fragment>
                             {todo.todo}
                             <button onClick={() => deleteTodo(todo.id)}>&times;</button>
                             <button onClick={() => toDoCompleted(todo.id)}>Completed?</button>
-                        </div>:
-                        <div>{todo.todo}</div>
+                        </React.Fragment>:
+                        <React.Fragment>{todo.todo}</React.Fragment>
                     }
                 </li>
             ))}
