@@ -1,6 +1,15 @@
 import React, { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import ToDo from './Todo';
+
+const style = {
+    backgroundColor:'pink',
+    margin:20,
+    borderRadius:10
+}
+
+
 
 function NavToDo(){
     const [tasklistState, setTasklistState] = React.useState(0);
@@ -29,8 +38,6 @@ function NavToDo(){
         // clear input box
         setInput("");
 
-        // set focus to input field
-        inputReference.current.focus();
     };
 
     const deleteTodo = (id) => {
@@ -71,6 +78,7 @@ function NavToDo(){
     return(
         <div>
             <h1>Todo List</h1>
+            <div style={style}>
             <div id='buttonContainer'>
                 <button 
                     id='btnNav'
@@ -96,49 +104,23 @@ function NavToDo(){
             value = {input}
             onChange = {(e) => setInput(e.target.value)}
         />    
-        <button onClick={() => addTodo(input)}>Add</button>
-            <ToDo 
-                tasksState={tasklistState}
-                deleteTodo={deleteTodo} 
-                setList={setList}
-                list={list.filter((todo) => 
-                    todo.todoState === tasklistState || tasklistState === 0)}/>
+        <button class="add" onClick={() => addTodo(input)}>Add</button>
+           
 
     </div>
+    </div>
+     <ToDo 
+        tasksState={tasklistState}
+        deleteTodo={deleteTodo} 
+        setList={setList}
+        list={list.filter((todo) => 
+            todo.todoState === tasklistState || tasklistState === 0)}/>
+
         </div>
     )
 }
-function ToDo({tasksState, list,setList, deleteTodo}){
-    const toDoCompleted = (id) => {
-        const objIndex = list.findIndex((obj => obj.id === id));
-        let tasklist = list;
-        tasklist[objIndex].todoState = 2;
-        setList(tasklist);
-    }
-    return(
-        <div>
-        <ul>
-            {list
-                    .filter((todo) => 
-                        todo.todoState === tasksState || tasksState === 0)
-                    .map((todo) => (
-                <li key={todo.id}>
-                    {  
-                        todo.todoState === 1 ?
-                        <React.Fragment>
-                            {todo.todo}
-                            <button onClick={() => deleteTodo(todo.id)}>&times;</button>
-                            <button onClick={() => toDoCompleted(todo.id)}>Completed?</button>
-                        </React.Fragment>:
-                        <React.Fragment>{todo.todo}</React.Fragment>
-                    }
-                </li>
-            ))}
-        </ul>
-    </div>
-    )
 
-}
+
 
   // ========================================
   const root = ReactDOM.createRoot(document.getElementById("root"));
