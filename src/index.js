@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
@@ -9,6 +9,12 @@ function NavToDo(){
     const [activeComp, setActiveComp] = React.useState(false);
     const [list, setList] = React.useState([]);
     const [input, setInput] = React.useState("");
+    const inputReference = useRef(null);
+    
+    React.useEffect(() => {
+        // set focus to input field
+        inputReference.current.focus();
+    }, []);
     
     const addTodo = (todo) => {
         const newTodo = {
@@ -22,6 +28,9 @@ function NavToDo(){
 
         // clear input box
         setInput("");
+
+        // set focus to input field
+        inputReference.current.focus();
     };
 
     const deleteTodo = (id) => {
@@ -83,6 +92,7 @@ function NavToDo(){
             <div id='container'>
         <input 
             type = "text"
+            ref = {inputReference}
             value = {input}
             onChange = {(e) => setInput(e.target.value)}
         />    
